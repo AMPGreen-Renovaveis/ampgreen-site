@@ -227,7 +227,67 @@
   }
   button.submit:hover{background:var(--green);}
   .form-note{font-size:0.82rem; color:var(--ink-soft);}
+  .form-status{margin:0; font-size:0.92rem; font-weight:600; display:none;}
+  .form-status.ok{display:block; color:var(--green);}
+  .form-status.err{display:block; color:#B3261E;}
 
+
+
+
+  #smartess{
+    background: radial-gradient(circle at 15% 20%, rgba(124,90,214,0.18), transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(46,196,140,0.16), transparent 45%),
+                linear-gradient(160deg, #0B1130 0%, #121A44 55%, #0B1130 100%);
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .smartess-badge{
+    display:inline-flex; align-items:center; gap:7px; padding:6px 14px; border-radius:999px;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);
+    font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    color:#B9C7FF; margin-bottom:18px;
+  }
+  .smartess-badge .dot{width:7px; height:7px; border-radius:50%; background:#3FE0A5; box-shadow:0 0 8px #3FE0A5;}
+  .smartess-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center; position:relative; z-index:2;}
+  .smartess-photo img{
+    width:100%; border-radius:16px; display:block;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.08), 0 24px 60px rgba(0,0,0,0.5);
+  }
+  .smartess-kicker{display:none;}
+  .smartess-title{
+    font-size:2.1rem; margin-bottom:14px; line-height:1.15;
+    background:linear-gradient(90deg,#9C8CFF 0%, #6FA8FF 45%, #3FE0A5 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  #smartess .lede{color:rgba(255,255,255,0.82);}
+  .smartess-bullets{list-style:none; margin:26px 0 32px; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:14px 18px;}
+  .smartess-bullets li{
+    position:relative; padding-left:26px; font-size:0.92rem; color:rgba(255,255,255,0.9); line-height:1.4;
+  }
+  .smartess-bullets li::before{
+    content:"✓"; position:absolute; left:0; top:-1px; width:18px; height:18px; border-radius:50%;
+    background:linear-gradient(135deg,#7C5AD6,#3FE0A5); color:#0B1130; font-size:0.62rem; font-weight:900;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .smartess-cta{
+    background:linear-gradient(90deg,#6C5CE7,#3FE0A5) !important; border:none !important; color:#0B1130 !important;
+    font-weight:700 !important; box-shadow:0 10px 24px rgba(108,92,231,0.35);
+  }
+  .smartess-cta:hover{filter:brightness(1.08);}
+  @media (max-width:860px){ .smartess-grid{grid-template-columns:1fr;} .smartess-photo{order:-1;} .smartess-bullets{grid-template-columns:1fr;} }
+
+  .faq-list{border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line); padding:6px 0;}
+  .faq-item summary{
+    cursor:pointer; list-style:none; padding:18px 30px 18px 0; position:relative;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; color:var(--forest);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+"; position:absolute; right:4px; top:50%; transform:translateY(-50%);
+    font-size:1.4rem; font-weight:400; color:var(--gold-deep); transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{content:"\2212";}
+  .faq-item p{margin:0 0 20px; font-size:0.96rem; color:var(--ink-soft); line-height:1.65; max-width:38em;}
 
   .brands-strip{padding:44px 0; border-top:1px solid var(--line); background:var(--paper); overflow:hidden;}
   .brands-kicker{text-align:center; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:22px;}
@@ -311,7 +371,9 @@
       <a href="#sobre">Sobre Nós</a>
       <a href="#porque">Porquê a AMPGreen</a>
       <a href="#servicos">Serviços</a>
+      <a href="#smartess">SMARTESS</a>
       <a href="#processo">Como funciona</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto" class="cta-btn" style="margin-left:6px;">Pedir contacto</a>
     </nav>
   </div>
@@ -463,6 +525,30 @@
     </div>
   </section>
 
+  <section id="smartess">
+    <div class="wrap">
+      <div class="smartess-grid reveal">
+        <div class="smartess-photo"><img src="foto-smartess.jpg" alt="SMARTESS by AmpGreen — sistema de armazenamento Anti-Apagão"></div>
+        <div class="smartess-body">
+          <div class="smartess-badge"><span class="dot"></span> Produto exclusivo AMPGreen</div>
+          <h2 class="smartess-title">SMARTESS — Backup Anti-Apagão</h2>
+          <p class="lede">A sua energia à medida: inteligente, autónoma e evolutiva.</p>
+          <ul class="smartess-bullets">
+            <li>Utiliza a sua energia solar mesmo durante a noite</li>
+            <li>Maior autonomia face aos mercados de energia</li>
+            <li>Mais segurança em casa graças à função Anti-Apagão</li>
+            <li>Sistema de gestão de energia inteligente</li>
+            <li>Solução modular e evolutiva, à medida da sua casa</li>
+            <li>Compatível com a sua instalação fotovoltaica existente</li>
+            <li>Concebido e montado em Portugal 🇵🇹</li>
+            <li>Até 10 anos de garantia</li>
+          </ul>
+          <a href="#contacto" class="cta-btn smartess-cta">Pedir mais informações</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="processo" class="section-cream">
     <div class="wrap">
       <div class="section-head reveal">
@@ -515,7 +601,7 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" action="https://formspree.io/f/xoevaoyw" method="POST">
+      <form class="contact-form" id="ampgreen-contact-form" action="https://formspree.io/f/xoevaoyw" method="POST">
         <div class="row2">
           <div>
             <label for="nome">Nome</label>
@@ -538,7 +624,43 @@
           <button type="submit" class="submit">Enviar pedido</button>
           <span class="form-note">Resposta diretamente por email ou telefone.</span>
         </div>
+        <p class="form-status" id="ampgreen-form-status" role="status" aria-live="polite"></p>
       </form>
+    </div>
+  </section>
+
+  <section id="faq" class="section-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">FAQ</div>
+        <h2>Perguntas frequentes</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Quanto tempo demora a instalação de um sistema solar?</summary>
+          <p>Depende da dimensão do sistema, mas na maioria dos casos residenciais a instalação em si demora 1 a 2 dias. O processo completo — desde o primeiro contacto até ao sistema ligado e legalizado — costuma demorar algumas semanas, sobretudo por causa dos prazos da própria DGEG.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Preciso mesmo de bateria para ter poupança?</summary>
+          <p>Não. Um sistema de painéis solares sem bateria já reduz significativamente a fatura, aproveitando a energia enquanto está a ser produzida. A bateria é um passo adicional para quem quer aproveitar também a energia excedente durante a noite.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como funciona o licenciamento na DGEG?</summary>
+          <p>Depois da instalação, é feito o registo do sistema junto da DGEG (UPAC). Nós tratamos de todo esse processo por si — desde o registo inicial até à aprovação final — sem que precise de se preocupar com a parte burocrática.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Trabalham em todo o país?</summary>
+          <p>Sim. Apesar de estarmos baseados no Seixal, trabalhamos com clientes em qualquer distrito de Portugal continental.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso instalar um carregador (wallbox) sem ter painéis solares?</summary>
+          <p>Sim, os dois serviços são independentes. Pode instalar apenas o carregador para o seu veículo elétrico, ou integrá-lo com um sistema solar já existente ou a instalar.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como é feito o acompanhamento depois da instalação?</summary>
+          <p>O acompanhamento não termina com a instalação. Continuamos disponíveis para qualquer questão sobre o funcionamento do sistema, sempre com a mesma pessoa como ponto de contacto.</p>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -577,8 +699,10 @@
       <a href="#sobre">Sobre Nós</a>
       <a href="#porque">Porquê a AMPGreen</a>
       <a href="#servicos">Serviços</a>
+      <a href="#smartess">SMARTESS</a>
       <a href="#processo">Como funciona</a>
       <a href="#contacto">Contacto</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <a class="social-link" href="https://www.instagram.com/ampgreen_energia" target="_blank" rel="noopener" aria-label="AMPGreen no Instagram">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -593,6 +717,41 @@
 
 
 <script>
+  (function(){
+    var form = document.getElementById('ampgreen-contact-form');
+    if (form) {
+      var status = document.getElementById('ampgreen-form-status');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        status.className = 'form-status';
+        status.textContent = '';
+        var submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        var originalText = submitBtn.textContent;
+        submitBtn.textContent = 'A enviar...';
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(response){
+          if (response.ok) {
+            status.textContent = 'Pedido enviado com sucesso! Vamos responder em breve.';
+            status.className = 'form-status ok';
+            form.reset();
+          } else {
+            status.textContent = 'Não foi possível enviar. Tenta novamente ou contacta-nos diretamente.';
+            status.className = 'form-status err';
+          }
+        }).catch(function(){
+          status.textContent = 'Não foi possível enviar. Tenta novamente ou contacta-nos diretamente.';
+          status.className = 'form-status err';
+        }).finally(function(){
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        });
+      });
+    }
+  })();
   (function(){
     var els = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) {
