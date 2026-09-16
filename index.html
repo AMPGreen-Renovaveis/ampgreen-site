@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMPGreen — Energia Solar Fotovoltaica</title>
+<meta name="description" content="Instalação de painéis solares e baterias em todo Portugal, acompanhada diretamente por técnicos certificados pela DGEG. Sem intermediários.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest-deep:#122A1C;
+    --forest:#1E3F27;
+    --green:#3E7A3C;
+    --green-light:#6FA855;
+    --gold:#E2A93D;
+    --gold-deep:#9C6A1E;
+    --gold-light:#F1C878;
+    --cream:#F6F3EA;
+    --paper:#FCFBF7;
+    --ink:#16241A;
+    --ink-soft:#3F4F42;
+    --line: rgba(22,36,26,0.12);
+    --radius: 4px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:#12201A; --paper:#0E1A14; --ink:#EDF3EC; --ink-soft:#B9C7BC;
+      --line: rgba(237,243,236,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#12201A; --paper:#0E1A14; --ink:#EDF3EC; --ink-soft:#B9C7BC;
+    --line: rgba(237,243,236,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; font-size:16px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{
+    font-family:'Fraunces', serif; font-weight:600; line-height:1.15;
+    margin:0 0 0.5em; color:var(--forest);
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) h1, :root:not([data-theme="light"]) h2, :root:not([data-theme="light"]) h3 { color:var(--gold-light);} }
+  :root[data-theme="dark"] h1, :root[data-theme="dark"] h2, :root[data-theme="dark"] h3 { color:var(--gold-light);}
+
+  p{max-width:38em;}
+  .lede{font-size:1.15rem; color:var(--ink-soft); max-width:34em;}
+
+  header.site{ position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--line);}
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; color:var(--forest); text-decoration:none;}
+  .brand img{height:38px; width:auto;}
+  nav.links{display:flex; align-items:center; gap:30px;}
+  nav.links a{ text-decoration:none; color:var(--ink-soft); font-size:0.95rem; font-weight:500; padding-bottom:2px; border-bottom:1px solid transparent;}
+  nav.links a:hover{color:var(--forest); border-color:var(--green-light);}
+  .cta-btn{
+    display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    background:var(--forest); color:#fff !important; padding:11px 22px; line-height:1.2;
+    border-radius:var(--radius); text-decoration:none; font-weight:600; font-size:0.95rem;
+    border:1px solid var(--forest); transition: background .15s ease;
+  }
+  .cta-btn:hover{background:var(--green);}
+  .cta-btn.ghost{background:transparent; color:var(--forest) !important; border:1px solid var(--forest);}
+  .cta-btn.ghost:hover{background:var(--forest); color:#fff !important;}
+
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-toggle span{display:block; width:24px; height:2px; background:var(--forest); margin:5px 0;}
+
+  .hero{
+    padding:120px 0 108px; position:relative; overflow:hidden; color:#fff;
+    background: linear-gradient(rgba(14,26,18,0.74), rgba(14,26,18,0.7)), url('foto-hero.jpg') center/cover no-repeat;
+  }
+  .hero-overlay{display:none;}
+  .hero-content{position:relative; z-index:2; max-width:640px;}
+  .hero h1, .hero h2, .hero h3{color:#fff; font-size:clamp(2.1rem, 3.6vw, 3.05rem); max-width:16em;}
+  .hero .lede{color:rgba(255,255,255,0.86);}
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .hero .cta-btn.ghost{color:#fff !important; border-color:rgba(255,255,255,0.65);}
+  .hero .cta-btn.ghost:hover{background:rgba(255,255,255,0.14); color:#fff !important;}
+
+  .stat-block{
+    display:flex; align-items:baseline; gap:18px;
+    margin-top:40px; padding-top:26px; border-top:1px solid rgba(255,255,255,0.25);
+  }
+  .stat-num{
+    font-family:'Fraunces',serif; font-weight:700; font-size:4.4rem; color:var(--gold);
+    line-height:1; white-space:nowrap; letter-spacing:-0.02em;
+  }
+  .stat-prefix{display:block; font-size:0.85rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:4px;}
+  .hero .stat-label{font-size:1.1rem; font-weight:500; color:rgba(255,255,255,0.9); max-width:20em; margin:0;}
+  @media (max-width:860px){ .hero{padding:80px 0 64px;} .stat-block{flex-direction:column; align-items:flex-start; gap:6px;} }
+
+  section{padding:72px 0;}
+  .section-cream{background:var(--cream);}
+  .kicker{font-size:0.85rem; color:var(--green); font-weight:600; margin-bottom:10px;}
+  #porque h2, #servicos h2, #processo h2, #contacto h2{color:var(--gold-deep);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) #porque h2, :root:not([data-theme="light"]) #servicos h2, :root:not([data-theme="light"]) #processo h2, :root:not([data-theme="light"]) #contacto h2{color:var(--gold-light);} }
+  :root[data-theme="dark"] #porque h2, :root[data-theme="dark"] #servicos h2, :root[data-theme="dark"] #processo h2, :root[data-theme="dark"] #contacto h2{color:var(--gold-light);}
+  .section-head{max-width:38em; margin-bottom:44px;}
+
+
+  .about-grid{display:grid; grid-template-columns:1.3fr 0.9fr; gap:48px; align-items:start;}
+  .about-body{max-width:42em;}
+  .about-lead{
+    font-family:'Fraunces',serif; font-weight:500; font-size:1.5rem; color:var(--forest);
+    border-left:3px solid var(--gold); padding-left:24px; margin-bottom:30px; line-height:1.45;
+  }
+  :root[data-theme="dark"] .about-lead{color:var(--gold-light);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .about-lead{color:var(--gold-light);} }
+  .about-body p{color:var(--ink); font-size:1.05rem; line-height:1.75; margin-bottom:22px;}
+  .about-highlight{
+    font-family:'Fraunces',serif; font-weight:600; font-style:italic; font-size:1.3rem;
+    color:var(--gold-deep); line-height:1.4; margin:36px 0; padding:0;
+  }
+  :root[data-theme="dark"] .about-highlight{color:var(--gold-light);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .about-highlight{color:var(--gold-light);} }
+  .about-photo{max-width:260px; margin-left:auto;}
+  .about-photo img{width:100%; height:100%; object-fit:cover; border:1px solid var(--line); border-radius:22px; aspect-ratio:4/5; display:block; box-shadow:0 12px 28px rgba(18,42,28,0.14);}
+  @media (max-width:860px){ .about-photo{max-width:220px; margin:0 auto;} }
+  .about-caption{margin-top:12px; text-align:center;}
+  .about-caption strong{display:block; font-family:'Fraunces',serif; font-weight:600; font-size:1rem; color:var(--forest);}
+  :root[data-theme="dark"] .about-caption strong{color:var(--gold-light);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .about-caption strong{color:var(--gold-light);} }
+  .about-caption span{display:block; font-size:0.85rem; color:var(--ink); margin-top:2px;}
+  .about-photo.placeholder{
+    aspect-ratio:4/5; border-radius:var(--radius);
+    background:linear-gradient(145deg, var(--green-light), var(--gold-light));
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:#fff; font-family:'Fraunces',serif; font-size:1rem; padding:20px;
+  }
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+
+  .why-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:0; border-top:1px solid var(--line);}
+  @media (max-width:960px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  .why-item{ padding:36px 34px; border-right:1px solid var(--line); display:flex; flex-direction:column;}
+  .why-item:last-child{border-right:none;}
+  .why-item .icon{margin-bottom:20px;}
+  .why-item h3{font-size:1.15rem; margin-bottom:10px;}
+  .why-item p{font-size:0.95rem; color:var(--ink-soft); margin:0; line-height:1.6;}
+
+  .svc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  .svc-card{
+    border:1px solid var(--line); border-top:3px solid var(--line); border-radius:14px; overflow:hidden;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .svc-card:nth-child(odd){border-top-color:var(--green);}
+  .svc-card:nth-child(even){border-top-color:var(--gold-deep);}
+  .svc-card:hover{transform:translateY(-3px); box-shadow:0 12px 26px rgba(18,42,28,0.12);}
+  .svc-card:nth-child(odd):hover{border-color:var(--green);}
+  .svc-card:nth-child(even):hover{border-color:var(--gold-deep);}
+  .svc-photo{aspect-ratio:16/10; background:var(--cream); overflow:hidden;}
+  .svc-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .svc-photo-placeholder{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--green-light), var(--gold-light));
+    color:#fff; font-family:'Fraunces',serif; font-size:0.95rem; text-align:center; padding:16px;
+  }
+  .svc-body{padding:22px 24px 26px;}
+  .svc-card h3{font-size:1.15rem; margin:0 0 14px;}
+  .svc-bullets{list-style:none; margin:0; padding:0; display:grid; gap:9px;}
+  .svc-bullets li{position:relative; padding-left:22px; font-size:0.92rem; color:var(--ink-soft); line-height:1.4;}
+  .svc-bullets li::before{content:""; position:absolute; left:0; top:0.5em; width:8px; height:8px; border-radius:50%;}
+  .svc-card:nth-child(odd) .svc-bullets li::before{background:var(--green);}
+  .svc-card:nth-child(even) .svc-bullets li::before{background:var(--gold-deep);}
+  @media (max-width:640px){ .svc-grid{grid-template-columns:1fr;} }
+
+  .process{position:relative; padding-top:8px;}
+  .process::before{content:"";position:absolute; left:46px; top:8px; bottom:8px; width:2px; background:var(--line);}
+  .proc-item{
+    display:grid; grid-template-columns: 60px 1fr; gap:24px; padding:22px 16px; margin:0 -16px;
+    border-radius:10px; position:relative; cursor:default;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .proc-item:nth-child(odd):hover{background:rgba(62,122,60,0.08); transform:translateX(4px);}
+  .proc-item:nth-child(even):hover{background:rgba(156,106,30,0.10); transform:translateX(4px);}
+  .proc-item .num{
+    width:60px; height:60px; border-radius:50%; background:var(--forest); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem;
+    position:relative; z-index:2; box-shadow:0 0 0 6px var(--cream);
+    transition: transform .2s ease;
+  }
+  .proc-item:hover .num{transform:scale(1.08);}
+  .proc-item:nth-child(even) .num{background:var(--gold-deep);}
+  .proc-item .proc-body{padding-top:6px;}
+  .proc-item h3{font-size:1.15rem; margin-bottom:6px;}
+  .proc-item p{font-size:0.95rem; color:var(--ink-soft); margin:0; max-width:30em;}
+
+  .contact-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:60px; align-items:start;}
+  .contact-info h2{font-size:1.9rem;}
+  .contact-list{margin-top:32px; display:grid; gap:22px;}
+  .contact-row{
+    display:flex; align-items:center; gap:16px; font-size:1.15rem; color:var(--ink); font-weight:600;
+    text-decoration:none; transition:transform .15s ease;
+  }
+  a.contact-row:hover{transform:translateX(4px); color:var(--forest);}
+  .c-icon-wrap{
+    flex:0 0 auto; width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(18,42,28,0.15);
+  }
+  .c-icon-wrap.green{background:var(--green);}
+  .c-icon-wrap.gold{background:var(--gold-deep);}
+
+  form.contact-form{display:grid; gap:16px;}
+  form.contact-form .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  label{font-size:0.85rem; font-weight:600; color:var(--ink-soft); display:block; margin-bottom:6px;}
+  input, textarea{
+    width:100%; font-family:'Work Sans',sans-serif; font-size:0.98rem; padding:11px 13px;
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); color:var(--ink);
+  }
+  input:focus, textarea:focus{ outline:2px solid var(--green-light); outline-offset:1px; border-color:var(--green-light);}
+  textarea{resize:vertical; min-height:110px;}
+  .submit-row{display:flex; align-items:center; gap:16px; margin-top:4px; flex-wrap:wrap;}
+  button.submit{
+    background:var(--forest); color:#fff; border:1px solid var(--forest); padding:13px 26px;
+    font-weight:600; font-size:0.98rem; border-radius:var(--radius); cursor:pointer;
+  }
+  button.submit:hover{background:var(--green);}
+  .form-note{font-size:0.82rem; color:var(--ink-soft);}
+
+
+  .brands-strip{padding:44px 0; border-top:1px solid var(--line); background:var(--paper); overflow:hidden;}
+  .brands-kicker{text-align:center; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:22px;}
+  .brands-viewport{overflow:hidden; width:100%;}
+  .brands-track{display:flex; align-items:center; gap:52px; width:max-content; animation:brandsScroll 24s linear infinite;}
+  .brands-strip:hover .brands-track{animation-play-state:paused;}
+  @keyframes brandsScroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){ .brands-track{animation:none;} }
+  .brand-item{flex:0 0 auto; display:flex; align-items:center; justify-content:center;}
+  .brand-item img{height:44px; width:auto; max-width:140px; object-fit:contain; filter:grayscale(1) opacity(0.6); transition:filter .2s ease, transform .2s ease;}
+  .brand-item img:hover{filter:grayscale(0) opacity(1); transform:scale(1.08);}
+  .brand-item.placeholder{border:1px solid var(--line); border-radius:6px; padding:12px 24px; background:var(--cream); transition:border-color .2s ease, background .2s ease, transform .2s ease;}
+  .brand-item.placeholder span{font-family:'Fraunces',serif; font-weight:600; font-size:1rem; color:var(--ink-soft); white-space:nowrap; transition:color .2s ease;}
+  .brand-item.placeholder:hover{border-color:var(--green-light); background:var(--paper); transform:translateY(-2px);}
+  .brand-item.placeholder:hover span{color:var(--forest);}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  .why-grid .why-item.reveal:nth-child(1){transition-delay:0s;}
+  .why-grid .why-item.reveal:nth-child(2){transition-delay:.12s;}
+  .why-grid .why-item.reveal:nth-child(3){transition-delay:.24s;}
+  .why-grid .why-item.reveal:nth-child(4){transition-delay:.36s;}
+  .svc-grid .svc-card.reveal:nth-child(1){transition-delay:0s;}
+  .svc-grid .svc-card.reveal:nth-child(2){transition-delay:.1s;}
+  .svc-grid .svc-card.reveal:nth-child(3){transition-delay:.2s;}
+  .svc-grid .svc-card.reveal:nth-child(4){transition-delay:.3s;}
+  .process .proc-item.reveal:nth-child(1){transition-delay:0s;}
+  .process .proc-item.reveal:nth-child(2){transition-delay:.08s;}
+  .process .proc-item.reveal:nth-child(3){transition-delay:.16s;}
+  .process .proc-item.reveal:nth-child(4){transition-delay:.24s;}
+  .process .proc-item.reveal:nth-child(5){transition-delay:.32s;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+
+  footer{ border-top:1px solid var(--line); padding:36px 0; background:var(--forest-deep); color:#DCE7DE;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer .fbrand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600;}
+  footer .fbrand img{height:26px;}
+  footer nav{display:flex; gap:22px; flex-wrap:wrap;}
+  footer nav a{color:#B9C7BC; text-decoration:none; font-size:0.9rem;}
+  footer nav a:hover{color:#fff;}
+  .social-link{color:#B9C7BC; display:inline-flex; transition:color .2s ease;}
+  .social-link:hover{color:#fff;}
+  footer .fine{width:100%; font-size:0.8rem; color:#8FA394; margin-top:18px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px;}
+
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr; gap:38px;}
+    .hero{padding:48px 0 56px;}
+    .hero-visual{order:-1; max-width:220px; margin:0 auto;}
+    nav.links{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0; padding:8px 28px 16px; display:none;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:10px 0; width:100%; border-bottom:1px solid var(--line);}
+    .menu-toggle{display:block;}
+    .why-grid{grid-template-columns:1fr;}
+    .why-item{border-right:none; border-bottom:1px solid var(--line); padding:28px 0;}
+    .why-item:last-child{border-bottom:none;}
+    .contact-grid{grid-template-columns:1fr; gap:40px;}
+    form.contact-form .row2{grid-template-columns:1fr;}
+    .stat-block{flex-direction:column; align-items:flex-start; gap:6px;}
+    section{padding:52px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="logo.png" alt="Logótipo AMPGreen">
+      AMPGreen
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu" onclick="document.querySelector('nav.links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links">
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#porque">Porquê a AMPGreen</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#contacto" class="cta-btn" style="margin-left:6px;">Pedir contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="wrap hero-content">
+      <h1>Soluções de eficiência energética, do primeiro contacto à independência da rede.</h1>
+      <p class="lede">Do projeto e instalação à manutenção, tratamos de tudo.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="cta-btn">Pedir contacto</a>
+        <a href="#processo" class="cta-btn ghost">Como funciona</a>
+      </div>
+      <div class="stat-block">
+        <div><span class="stat-prefix">Poupe em média</span><div class="stat-num">70%</div></div>
+        <p class="stat-label">na fatura de eletricidade, com produção própria e armazenamento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Sobre nós</div>
+        <h2>AMPGreen</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-body">
+          <p class="about-lead">A energia solar devia ser uma decisão simples. Na prática, muita gente desiste a meio — orçamentos e explicações pouco claras, prazos que não se cumprem e sem comunicação constante, ou ninguém que explique o que está realmente a ser instalado.</p>
+          <p>Foi para resolver essa lacuna que fundamos a AMPGreen.</p>
+          <p>Com técnicos certificados pela DGEG, assumimos a responsabilidade técnica de cada projeto pessoalmente. O dimensionamento é feito com dados reais do seu consumo fornecidos, e o acompanhamento continua depois da instalação estar concluída.</p>
+          <p class="about-highlight">"Menos impasses. Mais clareza." É essa a diferença que queremos trazer ao setor.</p>
+          <p>A produção de energia elétrica através do sol e a independência energética devem ser acessíveis a todos — por isso viemos ajudar a que isso seja uma realidade, e não apenas um "luxo".</p>
+        </div>
+        <div class="about-photo">
+          <img src="foto-sobre.jpg" alt="Rafael Silva, Fundador e Responsável Técnico da AMPGreen">
+          <div class="about-caption"><strong>Rafael Silva</strong><span>Fundador e Responsável Técnico</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="porque" class="section-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Porquê a AMPGreen</div>
+        <h2>Um acompanhamento certificado, personalizado e próximo de si.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3E7A3C" stroke-width="1.6">
+            <path d="M12 2l7 3.5v5c0 5-3.5 8-7 9.5-3.5-1.5-7-4.5-7-9.5v-5L12 2z"/>
+            <path d="M9 12l2 2 4-4.5"/>
+          </svg>
+          <h3>Certificação DGEG</h3>
+          <p>A responsabilidade técnica da sua instalação é assumida diretamente por nós, com técnicos certificados na DGEG.</p>
+        </div>
+        <div class="why-item reveal">
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9C6A1E" stroke-width="1.6">
+            <circle cx="9" cy="7" r="3"/>
+            <path d="M2 21c0-4.2 3.1-6.5 7-6.5"/>
+            <path d="M15.5 11.5l2 2 4-4"/>
+          </svg>
+          <h3>Acompanhamento Próximo</h3>
+          <p>Do primeiro contacto ao fecho de obra e questões posteriores, o acompanhamento continua — sem call center, sem diversas pessoas, apenas uma pessoa responsável pelo bom funcionamento do seu projeto.</p>
+        </div>
+        <div class="why-item reveal">
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3E7A3C" stroke-width="1.6">
+            <path d="M4 20V10"/>
+            <path d="M10 20V4"/>
+            <path d="M16 20v-7"/>
+            <path d="M3 20h18"/>
+          </svg>
+          <h3>Dimensionamento com Dados Reais</h3>
+          <p>Analisamos o seu consumo e espaço disponível antes de propor qualquer sistema. Nada de tabelas e dados genéricos — o projeto é feito à sua medida e ao que procura.</p>
+        </div>
+        <div class="why-item reveal">
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9C6A1E" stroke-width="1.6">
+            <circle cx="12" cy="13" r="8"/>
+            <path d="M12 9v4l3 2"/>
+            <path d="M9 2h6"/>
+          </svg>
+          <h3>13 Anos de Experiência</h3>
+          <p>Mais de uma década de experiência no setor elétrico e energético.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Serviços</div>
+        <h2>O que fazemos por si</h2>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-photo"><img src="foto-paineis.jpg" alt="Painéis Solares"></div>
+          <div class="svc-body">
+            <h3>Painéis Solares</h3>
+            <ul class="svc-bullets">
+            <li>Redução significativa da fatura de eletricidade</li>
+            <li>Produção de energia limpa e renovável</li>
+            <li>Baixa manutenção e vida útil superior a 25 anos</li>
+            <li>Aumento do valor do imóvel</li>
+            </ul>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-photo"><img src="foto-baterias.jpg" alt="Armazenamento com Baterias"></div>
+          <div class="svc-body">
+            <h3>Armazenamento com Baterias</h3>
+            <ul class="svc-bullets">
+            <li>Aproveita a energia excedente, mesmo à noite</li>
+            <li>Maior independência da rede elétrica</li>
+            <li>Proteção em caso de falha de energia</li>
+            <li>Otimização do autoconsumo</li>
+            </ul>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-photo"><img src="foto-wallbox.jpg" alt="Carregadores (Wallbox)"></div>
+          <div class="svc-body">
+            <h3>Carregadores (Wallbox)</h3>
+            <ul class="svc-bullets">
+            <li>Carregamento mais rápido e seguro que a tomada</li>
+            <li>Pode integrar com o seu sistema solar</li>
+            <li>Reduz o custo de carregar o veículo</li>
+            <li>Comodidade de carregar em casa</li>
+            </ul>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-photo"><img src="foto-licenciamento.jpg" alt="Licenciamento DGEG"></div>
+          <div class="svc-body">
+            <h3>Licenciamento DGEG</h3>
+            <ul class="svc-bullets">
+            <li>Processo tratado do início ao fim</li>
+            <li>Conformidade legal garantida</li>
+            <li>Sem burocracia para o cliente</li>
+            <li>Acompanhamento até à aprovação final</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo" class="section-cream">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Como funciona</div>
+        <h2>Do primeiro contacto ao sistema funcional</h2>
+      </div>
+      <div class="process">
+        <div class="proc-item reveal">
+          <div class="num">01</div>
+          <div class="proc-body"><h3>Contacto inicial</h3><p>Explique-nos o que procura e o consumo da sua casa ou empresa — por telefone, email ou pelo formulário abaixo.</p></div>
+        </div>
+        <div class="proc-item reveal">
+          <div class="num">02</div>
+          <div class="proc-body"><h3>Análise e dimensionamento</h3><p>Estudamos o seu perfil de consumo e o local para propor um sistema à medida.</p></div>
+        </div>
+        <div class="proc-item reveal">
+          <div class="num">03</div>
+          <div class="proc-body"><h3>Proposta</h3><p>Recebe uma proposta clara, com explicação do que foi proposto.</p></div>
+        </div>
+        <div class="proc-item reveal">
+          <div class="num">04</div>
+          <div class="proc-body"><h3>Instalação</h3><p>O sistema é instalado e ligado à rede com todo o cuidado técnico que a certificação exige.</p></div>
+        </div>
+        <div class="proc-item reveal">
+          <div class="num">05</div>
+          <div class="proc-body"><h3>Licenciamento e acompanhamento</h3><p>Tratamos do registo na DGEG e continuamos a acompanhar o bom funcionamento do seu sistema.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact-grid reveal">
+      <div class="contact-info">
+        <div class="kicker">Contacto</div>
+        <h2>Vamos falar sobre o seu projeto</h2>
+        <p class="lede">Preencha o formulário ou contacte-nos diretamente.</p>
+        <div class="contact-list">
+          <a class="contact-row" href="mailto:geral@ampgreen.pt">
+            <span class="c-icon-wrap gold"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 6l9 7 9-7"/></svg></span>
+            <span>geral@ampgreen.pt</span>
+          </a>
+          <a class="contact-row" href="tel:+351926548854">
+            <span class="c-icon-wrap green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 006 6L15 14l5 2v4a2 2 0 01-2 2C9.5 22 2 14.5 2 6a2 2 0 012-2z"/></svg></span>
+            <span>+351 926 548 854</span>
+          </a>
+          <div class="contact-row">
+            <span class="c-icon-wrap gold"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 21c4-4.5 7-8.2 7-11a7 7 0 10-14 0c0 2.8 3 6.5 7 11z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>Seixal, Portugal</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xoevaoyw" method="POST">
+        <div class="row2">
+          <div>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div>
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone">
+          </div>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Ex.: casa com fatura mensal de X€, telhado orientado a sul..."></textarea>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="submit">Enviar pedido</button>
+          <span class="form-note">Resposta diretamente por email ou telefone.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<div class="brands-strip">
+  <div class="wrap">
+    <div class="brands-kicker">Principais marcas com que trabalhamos</div>
+    <div class="brands-viewport">
+      <div class="brands-track">
+        <div class="brand-item"><img src="logo-victron.png" alt="Victron"></div>
+        <div class="brand-item"><img src="logo-zycenergy.png" alt="Zyc Energy"></div>
+        <div class="brand-item"><img src="logo-fox.png" alt="FOX"></div>
+        <div class="brand-item"><img src="logo-fronius.png" alt="Fronius"></div>
+        <div class="brand-item"><img src="logo-solis.png" alt="SOLIS"></div>
+        <div class="brand-item"><img src="logo-dmegc.png" alt="DMEGC"></div>
+        <div class="brand-item"><img src="logo-longi.png" alt="LONGI"></div>
+        <div class="brand-item"><img src="logo-pylontech.png" alt="Pylontech"></div>
+        <div class="brand-item"><img src="logo-victron.png" alt="Victron"></div>
+        <div class="brand-item"><img src="logo-zycenergy.png" alt="Zyc Energy"></div>
+        <div class="brand-item"><img src="logo-fox.png" alt="FOX"></div>
+        <div class="brand-item"><img src="logo-fronius.png" alt="Fronius"></div>
+        <div class="brand-item"><img src="logo-solis.png" alt="SOLIS"></div>
+        <div class="brand-item"><img src="logo-dmegc.png" alt="DMEGC"></div>
+        <div class="brand-item"><img src="logo-longi.png" alt="LONGI"></div>
+        <div class="brand-item"><img src="logo-pylontech.png" alt="Pylontech"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a class="fbrand" href="#top"><img src="logo.png" alt="AMPGreen">AMPGreen</a>
+    <nav>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#porque">Porquê a AMPGreen</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="social-link" href="https://www.instagram.com/ampgreen_energia" target="_blank" rel="noopener" aria-label="AMPGreen no Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <div class="fine">© 2026 AMPGreen, Energias Renováveis.</div>
+  </div>
+</footer>
+
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
