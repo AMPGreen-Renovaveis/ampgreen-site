@@ -275,6 +275,14 @@
     font-weight:700 !important; box-shadow:0 10px 24px rgba(108,92,231,0.35);
   }
   .smartess-cta:hover{filter:brightness(1.08);}
+  .flag-pt{
+    display:inline-block; width:16px; height:11px; vertical-align:middle; margin-left:2px;
+    background:linear-gradient(to right, #046A38 40%, #DA291C 40%); border-radius:2px; position:relative;
+  }
+  .flag-pt::after{
+    content:""; position:absolute; left:40%; top:50%; width:6px; height:6px;
+    background:#FFCC00; border-radius:50%; transform:translate(-50%,-50%); box-shadow:0 0 0 1px rgba(0,0,0,0.15);
+  }
   @media (max-width:860px){ .smartess-grid{grid-template-columns:1fr;} .smartess-photo{order:-1;} .smartess-bullets{grid-template-columns:1fr;} }
 
   .faq-list{border-top:1px solid var(--line);}
@@ -540,7 +548,7 @@
             <li>Sistema de gestão de energia inteligente</li>
             <li>Solução modular e evolutiva, à medida da sua casa</li>
             <li>Compatível com a sua instalação fotovoltaica existente</li>
-            <li>Concebido e montado em Portugal 🇵🇹</li>
+            <li>Concebido e montado em Portugal <span class="flag-pt" role="img" aria-label="Portugal"></span></li>
             <li>Até 10 anos de garantia</li>
           </ul>
           <a href="#contacto" class="cta-btn smartess-cta">Pedir mais informações</a>
