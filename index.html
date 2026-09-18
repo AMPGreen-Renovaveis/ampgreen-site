@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMPGreen — Energia Solar Fotovoltaica</title>
-  <link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
 <meta name="description" content="Instalação de painéis solares e baterias em todo Portugal, acompanhada diretamente por técnicos certificados pela DGEG. Sem intermediários.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,18 @@
   p{max-width:38em;}
   .lede{font-size:1.15rem; color:var(--ink-soft); max-width:34em;}
 
-  header.site{ position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--line);}
+  header.site{
+    position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--line);
+    transition: background .25s ease, backdrop-filter .25s ease, border-color .25s ease;
+  }
+  header.site.is-scrolled{
+    background:rgba(252,251,247,0.68); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom-color:rgba(22,36,26,0.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
+  }
+  :root[data-theme="dark"] header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
   .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; color:var(--forest); text-decoration:none;}
   .brand img{height:38px; width:auto;}
@@ -409,7 +420,7 @@
           <p class="about-lead">A energia solar devia ser uma decisão simples. Na prática, muita gente desiste a meio — orçamentos e explicações pouco claras, prazos que não se cumprem e sem comunicação constante, ou ninguém que explique o que está realmente a ser instalado.</p>
           <p>Foi para resolver essa lacuna que fundamos a AMPGreen.</p>
           <p>Com técnicos certificados pela DGEG, assumimos a responsabilidade técnica de cada projeto pessoalmente. O dimensionamento é feito com dados reais do seu consumo fornecidos, e o acompanhamento continua depois da instalação estar concluída.</p>
-          <p class="about-highlight">"Menos impasses. Mais clareza."  É essa a diferença que queremos trazer ao setor.</p>
+          <p class="about-highlight">"Menos impasses. Mais clareza." É essa a diferença que queremos trazer ao setor.</p>
           <p>A produção de energia elétrica através do sol e a independência energética devem ser acessíveis a todos — por isso viemos ajudar a que isso seja uma realidade, e não apenas um "luxo".</p>
         </div>
         <div class="about-photo">
@@ -442,7 +453,7 @@
             <path d="M15.5 11.5l2 2 4-4"/>
           </svg>
           <h3>Acompanhamento Próximo</h3>
-          <p>Do primeiro contacto ao fecho de obra e questões posteriores, um acompanhamento presente e contínuo.</p>
+          <p>Do primeiro contacto ao fecho de obra e questões posteriores, o acompanhamento continua — sem call center, sem diversas pessoas, apenas uma pessoa responsável pelo bom funcionamento do seu projeto.</p>
         </div>
         <div class="why-item reveal">
           <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3E7A3C" stroke-width="1.6">
@@ -452,7 +463,7 @@
             <path d="M3 20h18"/>
           </svg>
           <h3>Dimensionamento com Dados Reais</h3>
-          <p>Analisamos o seu consumo real e espaço disponível antes de propor qualquer sistema. O projeto é feito à sua medida e ao que procura.</p>
+          <p>Analisamos o seu consumo e espaço disponível antes de propor qualquer sistema. Nada de tabelas e dados genéricos — o projeto é feito à sua medida e ao que procura.</p>
         </div>
         <div class="why-item reveal">
           <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9C6A1E" stroke-width="1.6">
@@ -461,7 +472,7 @@
             <path d="M9 2h6"/>
           </svg>
           <h3>13 Anos de Experiência</h3>
-          <p>Um corpo técnico com mais de uma década de experiência no setor.</p>
+          <p>Mais de uma década de experiência no setor elétrico e energético.</p>
         </div>
       </div>
     </div>
@@ -491,7 +502,7 @@
           <div class="svc-body">
             <h3>Armazenamento com Baterias</h3>
             <ul class="svc-bullets">
-            <li>Aproveita a energia excedente produzida</li>
+            <li>Aproveita a energia excedente, mesmo à noite</li>
             <li>Maior independência da rede elétrica</li>
             <li>Proteção em caso de falha de energia</li>
             <li>Otimização do autoconsumo</li>
@@ -503,9 +514,10 @@
           <div class="svc-body">
             <h3>Carregadores (Wallbox)</h3>
             <ul class="svc-bullets">
-            <li>Carregamento mais rápido</li>
+            <li>Carregamento mais rápido e seguro que a tomada</li>
             <li>Pode integrar com o seu sistema solar</li>
-            <li>Carregamento inteligente </li>
+            <li>Reduz o custo de carregar o veículo</li>
+            <li>Comodidade de carregar em casa</li>
             </ul>
           </div>
         </div>
@@ -531,17 +543,16 @@
         <div class="smartess-photo"><img src="foto-smartess.jpg" alt="SMARTESS by AmpGreen — sistema de armazenamento Anti-Apagão"></div>
         <div class="smartess-body">
           <div class="smartess-badge"><span class="dot"></span> Produto exclusivo AMPGreen</div>
-          <h2 class="smartess-title">SMARTESS — Sistema de Backup e Anti-Apagão</h2>
-          
+          <h2 class="smartess-title">SMARTESS — Backup Anti-Apagão</h2>
           <p class="lede">A sua energia à medida: inteligente, autónoma e evolutiva.</p>
           <ul class="smartess-bullets">
-            <li>Utiliza a sua energia solar armazenada quando necessário </li>
+            <li>Utiliza a sua energia solar mesmo durante a noite</li>
             <li>Maior autonomia face aos mercados de energia</li>
             <li>Mais segurança em casa graças à função Anti-Apagão</li>
             <li>Sistema de gestão de energia inteligente</li>
             <li>Solução modular e evolutiva, à medida da sua casa</li>
             <li>Compatível com a sua instalação fotovoltaica existente</li>
-            <li>Concebido e montado em Portugal</li>
+            <li>Concebido e montado em Portugal 🇵🇹</li>
             <li>Até 10 anos de garantia</li>
           </ul>
           <a href="#contacto" class="cta-btn smartess-cta">Pedir mais informações</a>
@@ -639,15 +650,15 @@
       <div class="faq-list reveal">
         <details class="faq-item">
           <summary>Quanto tempo demora a instalação de um sistema solar?</summary>
-          <p>Depende da dimensão do sistema, mas na maioria dos casos residenciais a instalação em si demora 1 a 2 dias. </p>
+          <p>Depende da dimensão do sistema, mas na maioria dos casos residenciais a instalação em si demora 1 a 2 dias. O processo completo — desde o primeiro contacto até ao sistema ligado e legalizado — costuma demorar algumas semanas, sobretudo por causa dos prazos da própria DGEG.</p>
         </details>
         <details class="faq-item">
-          <summary>Preciso mesmo de baterias para ter poupança?</summary>
-          <p>Não. Um sistema de painéis solares sem bateria já reduz significativamente a fatura, aproveitando a energia enquanto está a ser produzida. A bateria é um passo adicional para quem quer aproveitar também a energia excedente durante a noite e um sistema que em caso de falha da rede elétrica, possa fornecer energia a casa/negocio.</p>
+          <summary>Preciso mesmo de bateria para ter poupança?</summary>
+          <p>Não. Um sistema de painéis solares sem bateria já reduz significativamente a fatura, aproveitando a energia enquanto está a ser produzida. A bateria é um passo adicional para quem quer aproveitar também a energia excedente durante a noite.</p>
         </details>
         <details class="faq-item">
           <summary>Como funciona o licenciamento na DGEG?</summary>
-          <p>Depois da instalação, é feito o registo do sistema junto da DGEG. Nós tratamos de todo esse processo por si — desde o registo inicial até à aprovação final — sem que precise de se preocupar com a parte burocrática.</p>
+          <p>Depois da instalação, é feito o registo do sistema junto da DGEG (UPAC). Nós tratamos de todo esse processo por si — desde o registo inicial até à aprovação final — sem que precise de se preocupar com a parte burocrática.</p>
         </details>
         <details class="faq-item">
           <summary>Trabalham em todo o país?</summary>
@@ -659,7 +670,7 @@
         </details>
         <details class="faq-item">
           <summary>Como é feito o acompanhamento depois da instalação?</summary>
-          <p>O acompanhamento não termina com a instalação. Continuamos disponíveis para qualquer questão sobre o funcionamento do sistema, como também um controlo constante do bom funcionamento do seu sistema.</p>
+          <p>O acompanhamento não termina com a instalação. Continuamos disponíveis para qualquer questão sobre o funcionamento do sistema, sempre com a mesma pessoa como ponto de contacto.</p>
         </details>
       </div>
     </div>
@@ -718,6 +729,15 @@
 
 
 <script>
+  (function(){
+    var header = document.querySelector('header.site');
+    function onScroll(){
+      if (window.scrollY > 24) header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
   (function(){
     var form = document.getElementById('ampgreen-contact-form');
     if (form) {
