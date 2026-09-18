@@ -62,13 +62,23 @@
     transition: background .25s ease, backdrop-filter .25s ease, border-color .25s ease;
   }
   header.site.is-scrolled{
-    background:rgba(252,251,247,0.68); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    border-bottom-color:rgba(22,36,26,0.08);
+    background:var(--paper); border-bottom-color:rgba(22,36,26,0.08);
+  }
+  @supports (backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px)){
+    header.site.is-scrolled{
+      background:rgba(252,251,247,0.68); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    }
   }
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
+    :root:not([data-theme="light"]) header.site.is-scrolled{ background:var(--paper); }
   }
-  :root[data-theme="dark"] header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
+  :root[data-theme="dark"] header.site.is-scrolled{ background:var(--paper); }
+  @supports (backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px)){
+    @media (prefers-color-scheme: dark){
+      :root:not([data-theme="light"]) header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
+    }
+    :root[data-theme="dark"] header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
+  }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
   .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; color:var(--forest); text-decoration:none;}
   .brand img{height:38px; width:auto;}
