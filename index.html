@@ -26,12 +26,6 @@
     --radius: 4px;
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --cream:#12201A; --paper:#0E1A14; --ink:#EDF3EC; --ink-soft:#B9C7BC;
-      --line: rgba(237,243,236,0.14);
-    }
-  }
   :root[data-theme="dark"]{
     --cream:#12201A; --paper:#0E1A14; --ink:#EDF3EC; --ink-soft:#B9C7BC;
     --line: rgba(237,243,236,0.14);
@@ -51,7 +45,6 @@
     font-family:'Fraunces', serif; font-weight:600; line-height:1.15;
     margin:0 0 0.5em; color:var(--forest);
   }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) h1, :root:not([data-theme="light"]) h2, :root:not([data-theme="light"]) h3 { color:var(--gold-light);} }
   :root[data-theme="dark"] h1, :root[data-theme="dark"] h2, :root[data-theme="dark"] h3 { color:var(--gold-light);}
 
   p{max-width:38em;}
@@ -69,16 +62,7 @@
       background:rgba(252,251,247,0.68); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
     }
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) header.site.is-scrolled{ background:var(--paper); }
-  }
   :root[data-theme="dark"] header.site.is-scrolled{ background:var(--paper); }
-  @supports (backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px)){
-    @media (prefers-color-scheme: dark){
-      :root:not([data-theme="light"]) header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
-    }
-    :root[data-theme="dark"] header.site.is-scrolled{ background:rgba(14,26,20,0.6); }
-  }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
   .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; color:var(--forest); text-decoration:none;}
   .brand img{height:38px; width:auto;}
@@ -126,7 +110,6 @@
   .section-cream{background:var(--cream);}
   .kicker{font-size:0.85rem; color:var(--green); font-weight:600; margin-bottom:10px;}
   #porque h2, #servicos h2, #processo h2, #contacto h2{color:var(--gold-deep);}
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) #porque h2, :root:not([data-theme="light"]) #servicos h2, :root:not([data-theme="light"]) #processo h2, :root:not([data-theme="light"]) #contacto h2{color:var(--gold-light);} }
   :root[data-theme="dark"] #porque h2, :root[data-theme="dark"] #servicos h2, :root[data-theme="dark"] #processo h2, :root[data-theme="dark"] #contacto h2{color:var(--gold-light);}
   .section-head{max-width:38em; margin-bottom:44px;}
 
@@ -138,21 +121,18 @@
     border-left:3px solid var(--gold); padding-left:24px; margin-bottom:30px; line-height:1.45;
   }
   :root[data-theme="dark"] .about-lead{color:var(--gold-light);}
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .about-lead{color:var(--gold-light);} }
   .about-body p{color:var(--ink); font-size:1.05rem; line-height:1.75; margin-bottom:22px;}
   .about-highlight{
     font-family:'Fraunces',serif; font-weight:600; font-style:italic; font-size:1.3rem;
     color:var(--gold-deep); line-height:1.4; margin:36px 0; padding:0;
   }
   :root[data-theme="dark"] .about-highlight{color:var(--gold-light);}
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .about-highlight{color:var(--gold-light);} }
   .about-photo{max-width:260px; margin-left:auto;}
   .about-photo img{width:100%; height:100%; object-fit:cover; border:1px solid var(--line); border-radius:22px; aspect-ratio:4/5; display:block; box-shadow:0 12px 28px rgba(18,42,28,0.14);}
   @media (max-width:860px){ .about-photo{max-width:220px; margin:0 auto;} }
   .about-caption{margin-top:12px; text-align:center;}
   .about-caption strong{display:block; font-family:'Fraunces',serif; font-weight:600; font-size:1rem; color:var(--forest);}
   :root[data-theme="dark"] .about-caption strong{color:var(--gold-light);}
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .about-caption strong{color:var(--gold-light);} }
   .about-caption span{display:block; font-size:0.85rem; color:var(--ink); margin-top:2px;}
   .about-photo.placeholder{
     aspect-ratio:4/5; border-radius:var(--radius);
