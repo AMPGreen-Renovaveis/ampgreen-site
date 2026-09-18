@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ampgreen-renovaveis.github.io/ampgreen-site/sitemap.xml
