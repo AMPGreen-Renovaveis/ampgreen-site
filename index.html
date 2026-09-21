@@ -138,7 +138,8 @@
   .section-cream{background:var(--cream);}
   .kicker{font-size:0.85rem; color:var(--green); font-weight:600; margin-bottom:10px;}
   .kicker-gold{color:var(--gold-deep);}
-  #porque h2, #servicos h2, #processo h2, #contacto h2{color:var(--gold-deep);}
+  .kicker-green-light{color:var(--green-light);}
+  #porque h2, #servicos h2, #processo h2, #contacto h2, #faq h2{color:var(--gold-deep);}
   :root[data-theme="dark"] #porque h2, :root[data-theme="dark"] #servicos h2, :root[data-theme="dark"] #processo h2, :root[data-theme="dark"] #contacto h2{color:var(--gold-light);}
   .section-head{max-width:38em; margin-bottom:44px;}
 
@@ -195,7 +196,8 @@
   .svc-card:nth-child(odd):hover{border-color:var(--green);}
   .svc-card:nth-child(even):hover{border-color:var(--gold-deep);}
   .svc-photo{aspect-ratio:16/10; background:var(--cream); overflow:hidden;}
-  .svc-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .svc-photo img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease;}
+  .svc-card:hover .svc-photo img{transform:scale(1.08);}
   .svc-photo-placeholder{
     width:100%; height:100%; display:flex; align-items:center; justify-content:center;
     background:linear-gradient(135deg, var(--green-light), var(--gold-light));
@@ -208,6 +210,12 @@
   .svc-bullets li::before{content:""; position:absolute; left:0; top:0.5em; width:8px; height:8px; border-radius:50%;}
   .svc-card:nth-child(odd) .svc-bullets li::before{background:var(--green);}
   .svc-card:nth-child(even) .svc-bullets li::before{background:var(--gold-deep);}
+  .svc-link{
+    display:inline-block; margin-top:16px; font-size:0.9rem; font-weight:600;
+    color:var(--forest); text-decoration:none; border-bottom:1px solid var(--green-light);
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .svc-link:hover{color:var(--green); border-color:var(--green);}
   @media (max-width:640px){ .svc-grid{grid-template-columns:1fr;} }
 
   .process{position:relative; padding-top:8px;}
@@ -290,7 +298,7 @@
   }
   .smartess-kicker{display:none;}
   .smartess-title{
-    font-size:2.1rem; margin-bottom:14px; line-height:1.15;
+    font-size:2.1rem; margin-bottom:14px; line-height:1.35; padding-bottom:0.1em; display:inline-block;
     background:linear-gradient(90deg,#9C8CFF 0%, #6FA8FF 45%, #3FE0A5 100%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
@@ -391,16 +399,36 @@
   }
 
 
-  footer{ border-top:1px solid var(--line); padding:36px 0; background:var(--forest-deep); color:#DCE7DE;}
-  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
-  footer .fbrand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600;}
-  footer .fbrand img{height:26px;}
-  footer nav{display:flex; gap:22px; flex-wrap:wrap;}
-  footer nav a{color:#B9C7BC; text-decoration:none; font-size:0.9rem;}
-  footer nav a:hover{color:#fff;}
-  .social-link{color:#B9C7BC; display:inline-flex; transition:color .2s ease;}
-  .social-link:hover{color:#fff;}
-  footer .fine{width:100%; font-size:0.8rem; color:#8FA394; margin-top:18px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px;}
+  footer{ border-top:1px solid var(--line); background:var(--paper);}
+  footer .fbrand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; color:var(--forest); text-decoration:none;}
+  footer .fbrand img{height:38px;}
+
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding:56px 0 40px;}
+  .footer-brand-col .fbrand{margin-bottom:14px;}
+  .footer-tagline{color:var(--ink-soft); font-size:0.92rem; max-width:26em; margin:0 0 18px;}
+  .footer-social{display:flex; gap:10px;}
+  .footer-social .social-link{
+    color:var(--ink-soft); border:1px solid var(--line); border-radius:50%;
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  }
+  .footer-social .social-link:hover{color:var(--forest); border-color:var(--green-light);}
+  .footer-heading{
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; color:var(--forest);
+    margin:0 0 12px; padding-bottom:10px; border-bottom:2px solid var(--gold); display:inline-block;
+  }
+  .footer-links{display:flex; flex-direction:column; gap:10px;}
+  .footer-links a{color:var(--ink-soft); text-decoration:none; font-size:0.92rem;}
+  .footer-links a:hover{color:var(--forest);}
+  .footer-contacts{display:flex; flex-direction:column; gap:12px;}
+  .footer-contacts a, .footer-contacts .footer-location{
+    display:flex; align-items:flex-start; gap:9px; color:var(--ink-soft); text-decoration:none; font-size:0.92rem; line-height:1.4;
+  }
+  .footer-contacts a:hover{color:var(--forest);}
+  .footer-contacts svg{flex:0 0 auto; margin-top:1px;}
+  .footer-bottom{border-top:1px solid var(--line); background:var(--forest-deep); padding:18px 0; margin-top:0;}
+  .footer-bottom .wrap{color:#B9C7BC; font-size:0.82rem;}
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr; gap:32px;} }
+
 
   @media (max-width: 860px){
     .hero .wrap{grid-template-columns:1fr; gap:38px;}
@@ -470,9 +498,8 @@
         <div class="about-body">
           <div class="kicker">Quem Somos</div>
           <h2>AMPGreen</h2>
-          <p class="lede">A AMPGreen é uma empresa especialista em projetar sistemas de eficiencia energética. Projetamos e instalamos sistemas fotovoltaicos ajudando particulares e empresas a reduzirem custos e adotarem uma energia mais sustentável.
-
-A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a responsabilidade de cada projeto do primeiro contacto ao acompanhamento depois da instalação.</p>
+          <p class="lede">A AMPGreen é uma empresa especialista em projetar sistemas de eficiência energética. Projetamos e instalamos sistemas fotovoltaicos, ajudando particulares e empresas a reduzirem custos e a adotarem uma energia mais sustentável.</p>
+          <p class="lede">A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a responsabilidade de cada projeto do primeiro contacto ao acompanhamento depois da instalação.</p>
           <div class="about-stats">
             <div class="stat"><div class="num">13+</div><div class="label">Anos de experiência</div></div>
             <div class="stat"><div class="num">DGEG</div><div class="label">Técnico certificado</div></div>
@@ -490,7 +517,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
   <section id="porque" class="section-cream">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker kicker-green-light">Porquê a AMPGreen</div>
+        <div class="kicker">Porquê a AMPGreen</div>
         <h2>Um acompanhamento certificado, personalizado e próximo de si.</h2>
       </div>
       <div class="why-grid">
@@ -551,6 +578,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
             <li>Baixa manutenção e vida útil superior a 25 anos</li>
             <li>Aumento do valor do imóvel</li>
             </ul>
+            <a href="#contacto" class="svc-link">Saber mais →</a>
           </div>
         </div>
         <div class="svc-card reveal">
@@ -563,6 +591,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
             <li>Proteção em caso de falha de energia</li>
             <li>Otimização do autoconsumo</li>
             </ul>
+            <a href="#contacto" class="svc-link">Saber mais →</a>
           </div>
         </div>
         <div class="svc-card reveal">
@@ -573,6 +602,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
             <li>Carregamento mais rápido e inteligente</li>
             <li>Pode integrar com o seu sistema solar e aproveitar energia excedente</li>
             </ul>
+            <a href="#contacto" class="svc-link">Saber mais →</a>
           </div>
         </div>
         <div class="svc-card reveal">
@@ -585,6 +615,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
             <li>Sem burocracia para o cliente</li>
             <li>Acompanhamento até à aprovação final</li>
             </ul>
+            <a href="#contacto" class="svc-link">Saber mais →</a>
           </div>
         </div>
       </div>
@@ -597,7 +628,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
         <div class="smartess-photo"><img src="foto-smartess.jpg" alt="SMARTESS by AmpGreen — sistema de armazenamento Anti-Apagão"></div>
         <div class="smartess-body">
           <div class="smartess-badge"><span class="dot"></span> Produto exclusivo AMPGreen</div>
-          <h2 class="smartess-title">SMARTESS — Sistem de Backup e Anti-Apagão</h2>
+          <h2 class="smartess-title">SMARTESS — Sistema de Backup e Anti-Apagão</h2>
           <p class="lede">A sua energia à medida: inteligente, autónoma e evolutiva.</p>
           <ul class="smartess-bullets">
             <li>Utiliza a sua energia solar produzida mesmo durante a noite</li>
@@ -618,7 +649,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
   <section id="processo" class="section-cream">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker kicker-green-light">Como funciona</div>
+        <div class="kicker">Como funciona</div>
         <h2>Do primeiro contacto ao sistema funcional</h2>
       </div>
       <div class="process">
@@ -698,7 +729,7 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
   <section id="faq" class="section-cream">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker kicker-gold">FAQ</div>
+        <div class="kicker">FAQ</div>
         <h2>Perguntas frequentes</h2>
       </div>
       <div class="faq-list reveal">
@@ -759,25 +790,54 @@ A nossa equipa é composta por técnicos certificados pela DGEG, que assumem a r
 </div>
 
 <footer>
-  <div class="wrap">
-    <a class="fbrand" href="#top"><img src="logo.png" alt="AMPGreen">AMPGreen</a>
-    <nav>
-      <a href="sobre-nos.html">Sobre Nós</a>
-      <a href="#porque">Porquê a AMPGreen</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#smartess">SMARTESS</a>
-      <a href="#processo">Como funciona</a>
-      <a href="#contacto">Contacto</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a class="social-link" href="https://www.instagram.com/ampgreen_energia" target="_blank" rel="noopener" aria-label="AMPGreen no Instagram">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
-      </svg>
-    </a>
-    <div class="fine">© 2026 AMPGreen, Energias Renováveis.</div>
+  <div class="wrap footer-grid">
+    <div class="footer-col footer-brand-col">
+      <a class="fbrand" href="#top"><img src="logo.png" alt="AMPGreen">AMPGreen</a>
+      <p class="footer-tagline">Soluções de energia solar à medida.<br><br>O futuro é verde, vamos fazer parte?</p>
+      <div class="footer-social">
+        <a class="social-link" href="https://www.instagram.com/ampgreen_energia" target="_blank" rel="noopener" aria-label="AMPGreen no Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Links Rápidos</h3>
+      <nav class="footer-links">
+        <a href="#top">Home</a>
+        <a href="sobre-nos.html">Sobre Nós</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#smartess">SMARTESS</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Contactos</h3>
+      <div class="footer-contacts">
+        <a href="mailto:geral@ampgreen.pt">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 6l9 7 9-7"/></svg>
+          geral@ampgreen.pt
+        </a>
+        <a href="tel:+351926548854">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 006 6L15 14l5 2v4a2 2 0 01-2 2C9.5 22 2 14.5 2 6a2 2 0 012-2z"/></svg>
+          +351 926 548 854
+        </a>
+        <span class="footer-location">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M12 21c4-4.5 7-8.2 7-11a7 7 0 10-14 0c0 2.8 3 6.5 7 11z"/><circle cx="12" cy="10" r="3"/></svg>
+          Seixal, Portugal
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="wrap">© 2026 AMPGreen, Energias Renováveis. Todos os direitos reservados.</div>
   </div>
 </footer>
 
